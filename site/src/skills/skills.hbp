@@ -1,0 +1,6 @@
+
+<ul>
+  {{#each skills}}
+    <li>{{this.name}}: {{this.skillLevel}}</li>
+  {{/each}}
+</ul>
