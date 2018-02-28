@@ -1,37 +1,37 @@
 const gulp = require('gulp');
+const markdown = require('gulp-markdown');
 const through = require('through2')
 const handlebars = require('handlebars');
 const path = require('path')
-var ext_replace = require('gulp-ext-replace');
+const ext_replace = require('gulp-ext-replace');
 
-const safeRequireModel = (n) => {
-  try {
-    return require(n);
-  }catch(e) {
-    console.warn(e)
-    console.warn("Could not find model at " + n)
-    return {}
-  }
-}
 gulp.task('build-partials', function () {
 
     return gulp.src('**/*.hbp', {cwd: './src/'})
         .pipe(through.obj(function(chunk, enc, cb) {
-          const fileData = path.parse(chunk.path)
-          const model = safeRequireModel(`${fileData.dir}/${fileData.name}.js`)
-          const partial = handlebars.compile(chunk.contents.toString())(model)
           const partialName = chunk.relative.substr(0,chunk.relative.length - 4)
-          handlebars.registerPartial(partialName, partial)
+          handlebars.registerPartial(partialName, chunk.contents.toString())
           cb()
         }))
 });
 
-gulp.task('build-pages', ['build-partials'], function () {
+gulp.task('build-markdown', function () {
+
+    return gulp.src('**/*.md', {cwd: './src/'})
+        .pipe(markdown())
+        .pipe(through.obj(function(chunk, enc, cb) {
+          const partialName = chunk.relative.substr(0,chunk.relative.length - 3)
+          handlebars.registerPartial(partialName, chunk.contents.toString())
+          cb()
+        }))
+});
+
+gulp.task('build-pages', ['build-partials', 'build-markdown'], function () {
 
     return gulp.src('**/*.hbs', {cwd: './src/'})
         .pipe(through.obj(function(chunk, enc, cb) {
           const fileData = path.parse(chunk.path)
-          const model = safeRequireModel(`${fileData.dir}/${fileData.name}.js`)
+          const model = require(`${fileData.dir}/${fileData.name}.js`)
           const partial = handlebars.compile(chunk.contents.toString())(model)
           chunk.contents = new Buffer(partial)
           this.push(chunk)
@@ -40,5 +40,3 @@ gulp.task('build-pages', ['build-partials'], function () {
         .pipe(ext_replace("html"))
         .pipe(gulp.dest("./dist"))
 });
-
-gulp.task('default', ['build-pages'])
