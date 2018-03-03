@@ -17,6 +17,7 @@
     "gulp": "^3.9.1",
     "gulp-bundle-assets": "^2.29.0",
     "gulp-clean-css": "^3.9.2",
+    "gulp-concat-css": "^3.0.0",
     "gulp-ext-replace": "^0.3.0",
     "gulp-live-server": "0.0.31",
     "gulp-markdown": "^2.0.1",
