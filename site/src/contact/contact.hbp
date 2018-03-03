@@ -1,0 +1,75 @@
+
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact-section section-padding">
+        <div class="container">
+          <h2 class="section-title wow fadeInUp">Get in touch</h2>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="contact-form">
+                <strong>Send me a message</strong>
+                <form name="contact-form" id="contactForm" action="https://formspree.io/mark.a.tranter@gmail.com" method="POST">
+
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required="">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="_replyto" class="form-control" id="email" required="">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" name="_subject" class="form-control" id="subject">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" class="form-control" id="message" rows="5" required=""></textarea>
+                  </div>
+                  <input id="formspree_next" type="hidden" name="_next" value="//site.io/thanks.html" />
+                  <input type="text" name="_gotcha" style="display:none" />
+                  <button type="submit"  name="submit" class="btn btn-primary">Send Message</button>
+                </form>
+              </div><!-- /.contact-form -->
+              <div id="thanks" class="text-center">
+                <h3>Thanks!</h3>
+                <p>Unless you're spam or looking to help me with my SEO, I'll be in touch!</p>
+              </div>
+            </div><!-- /.col-md-6 -->
+
+            <div class="col-md-6">
+              <div class="row center-xs">
+                <div class="col-sm-6">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <address>
+                    <strong>Address</strong>
+                    Newcastle,<br>
+                    NSW, Australia<br>
+                  </address>
+                </div>
+
+                <div class="col-sm-6">
+                  <i class="fas fa-mobile-alt"></i>
+                  <div class="contact-number">
+                    <strong>Phone Number</strong>
+                    0499 769 278<br>
+                  </div>
+                </div>
+              </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="location-map">
+                  <div id="mapCanvas" class="map-canvas"></div>
+                </div>
+              </div>
+            </div>
+
+            </div>
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </section><!-- End Contact Section -->
