@@ -28,9 +28,13 @@ gulp.task('serve', ['build'], function() {
     gulp.start('build-pages')
   });
 
-  gulp.watch(['src/**/*.js'], function (file) {
+  gulp.watch(['src/**/*.js', '!src/assets/**/*.js'], function (file) {
     clearMatch()
     gulp.start('build-pages')
+  });
+
+	gulp.watch(['src/assets/**/*.js'], function (file) {
+    gulp.start('bundle-assets')
   });
 
   gulp.watch(['dist/**/*.html','dist/**/*.js','dist/**/*.css'], function (file) {

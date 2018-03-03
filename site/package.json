@@ -20,6 +20,7 @@
     "gulp-live-server": "0.0.31",
     "gulp-markdown": "^2.0.1",
     "gulp-rename": "^1.2.2",
+    "gulp-s3-upload": "^1.7.0",
     "handlebars": "^4.0.11",
     "require-dir": "^1.0.0",
     "through2": "^2.0.3"

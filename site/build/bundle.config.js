@@ -20,5 +20,5 @@ module.exports = {
       }
     }
   },
-  copy: 'src/assets/images/**/*.{png,svg,jpg,gif}'
+  copy: 'src/assets/**/*.{png,svg,jpg,gif,pdf}'
 };

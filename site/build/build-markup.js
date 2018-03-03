@@ -5,6 +5,14 @@ const handlebars = require('handlebars');
 const path = require('path')
 const ext_replace = require('gulp-ext-replace');
 
+handlebars.registerHelper('isEven', function(conditional, options) {
+  if((conditional % 2) == 0) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
 gulp.task('build-partials', function () {
 
     return gulp.src('**/*.hbp', {cwd: './src/'})

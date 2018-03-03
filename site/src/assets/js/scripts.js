@@ -251,40 +251,18 @@ jQuery(function ($) {
 
     }());
 
-
-
     // -------------------------------------------------------------
-    // Contact Form
+    // Contact
     // -------------------------------------------------------------
 
-    $('#contactForm').on('submit',function(e){
-
-        e.preventDefault();
-
-        var $action = $(this).prop('action');
-        var $data = $(this).serialize();
-        var $this = $(this);
-
-        $this.prevAll('.alert').remove();
-
-        $.post( $action, $data, function( data ) {
-
-            if( data.response=='error' ){
-
-                $this.before( '<div class="alert alert-danger">'+data.message+'</div>' );
-            }
-
-            if( data.response=='success' ){
-
-                $this.before( '<div class="alert alert-success">'+data.message+'</div>' );
-                $this.find('input, textarea').val('');
-            }
-
-        }, "json");
-
-    });
-
-
+    (function(){
+      if(location.search && location.search.indexOf("thanks") > -1){
+        $('.contact-form').hide()
+      }else {
+        $('#thanks').hide()
+        $('#formspree_next').val(window.location.href + "?thanks#contact");
+      }
+    })();
 
 
     // -------------------------------------------------------------
@@ -292,8 +270,8 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-        var myLatlng = new google.maps.LatLng(41.372641, -74.687387);
-
+        var myLatlng = new google.maps.LatLng(-32.9283, 151.7817);
+        var straya = new google.maps.LatLng(-28.0, 133.7751);
             var styles = [
                 {
                     featureType: "landscape",
@@ -326,9 +304,9 @@ jQuery(function ($) {
             ];
 
             var mapOptions = {
-                zoom: 15,
+                zoom: 4,
                 scrollwheel: false,
-                center: myLatlng,
+                center: straya,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 disableDefaultUI: true,
                 styles: styles
@@ -339,7 +317,7 @@ jQuery(function ($) {
                 position: myLatlng,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                title: 'Hello World!'
+                title: 'Me!'
             });
 
             var contentString = '' +
