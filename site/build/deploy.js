@@ -1,14 +1,24 @@
-var gulp = require('gulp');
-    var s3 = require('gulp-s3-upload')({});
+const gulp = require('gulp');
+const awspublish = require('gulp-awspublish');
 
 gulp.task("deploy", function() {
+
+  var publisher = awspublish.create({
+      region: 'ap-southeast-2',
+      params: {
+        Bucket: 'marktranter.com'
+      }
+    }, {
+      cacheFileName: '.s3-deploy-cache'
+    });
+
+  var headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public'
+  };
+
     gulp.src("./dist/**")
-        .pipe(s3({
-            Bucket: 'marktranter.com', //  Required
-            ACL:    'public-read'       //  Needs to be user-defined
-        }, {
-            // S3 Constructor Options, ie:
-            maxRetries: 5
-        }))
-    ;
+      .pipe(awspublish.gzip())
+      .pipe(publisher.publish(headers))
+      .pipe(publisher.cache())
+      .pipe(awspublish.reporter());
 });
