@@ -3,7 +3,8 @@
   <div class="intro">
     <div class="intro-sub">Mark Tranter</div>
     <h1>Software <span>Engineer</span></h1>
-    <p>I am an engineer.</br>I specialise in cloud native, event driven, eventually consistent architectures and other buzz words.</br> I dabble in data engineering.</br>(I am not a designer. I downloaded the design for this site...)</p>
+    <p>I am an engineer.</br>I specialise in cloud native, event driven, eventually consistent architectures and other buzz words.</br>
+    I dabble in data engineering.
 
     <div class="social-icons">
       <ul class="list-inline">
