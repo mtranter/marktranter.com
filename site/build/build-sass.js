@@ -4,7 +4,7 @@ const concatCss = require('gulp-concat-css');
 const cleanCss = require('gulp-clean-css');
 
 gulp.task('build-sass', function () {
-  return gulp.src('./**/*.scss')
+  return gulp.src('./src/**/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(concatCss("styles/bundle.css"))
     .pipe(cleanCss())

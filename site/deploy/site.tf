@@ -58,6 +58,15 @@ resource "aws_iam_access_key" "deployer" {
   pgp_key = "${data.template_file.pgp.rendered}"
 }
 
+data "terraform_remote_state" "common" {
+  backend = "s3"
+  config {
+    bucket     = "mtranter-terraform-state"
+    key        = "marktranter.com/common/state_a.tfstate"
+    region     = "ap-southeast-2"
+  }
+}
+
 resource "aws_cloudfront_distribution" "website_cdn" {
   enabled      = true
   price_class  = "PriceClass_All"
@@ -99,7 +108,7 @@ resource "aws_cloudfront_distribution" "website_cdn" {
     max_ttl          = "1200"                                             //86400
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_bucket.id}"
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     compress               = true
   }
 
@@ -110,10 +119,12 @@ resource "aws_cloudfront_distribution" "website_cdn" {
   }
 
   "viewer_certificate" {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = "${data.terraform_remote_state.common.wildcard_cert_arn}"
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1"
   }
 
-  aliases = ["${local.domain}"]
+  aliases = ["${local.domain}","www.${local.domain}"]
 
 }
 
@@ -123,7 +134,19 @@ data "aws_route53_zone" "mtranter" {
 
 resource "aws_route53_record" "www" {
   zone_id = "${data.aws_route53_zone.mtranter.zone_id}"
-  name    = "${local.domain}"
+  name    = "www"
+  type    = "A"
+
+  alias {
+    name                   = "${aws_cloudfront_distribution.website_cdn.domain_name}"
+    zone_id                = "${aws_cloudfront_distribution.website_cdn.hosted_zone_id}"
+    evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_record" "root" {
+  zone_id = "${data.aws_route53_zone.mtranter.zone_id}"
+  name    = "marktranter.com"
   type    = "A"
 
   alias {
