@@ -12,7 +12,6 @@
           </div>
           <ul>
             <li><strong>Name:</strong> {{personalDetails.name}}</li>
-            <li><strong>Date of birth:</strong> {{personalDetails.dob}}</li>
             <li><strong>Address:</strong> {{personalDetails.address}}</li>
             <li><strong>Nationality:</strong> {{personalDetails.nationality}}</li>
             <li><strong>Phone:</strong> {{personalDetails.phone}}</li>
