@@ -6,7 +6,7 @@ module.exports = {
   experience: [{
       from: 'Aug 2016',
       to: 'Present',
-      role:'Architect & Data Engineer',
+      role:'Senior Engineer',
       where: 'Judopay, London',
       website: `https://www.judopay.com`,
       blurb: `
