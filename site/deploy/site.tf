@@ -119,7 +119,7 @@ resource "aws_cloudfront_distribution" "website_cdn" {
   }
 
   "viewer_certificate" {
-    acm_certificate_arn      = "${data.terraform_remote_state.common.wildcard_cert_arn}"
+    acm_certificate_arn      = "${data.terraform_remote_state.common.root_cert_arn}"
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1"
   }
