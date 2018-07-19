@@ -9,7 +9,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "hoek": "^4.2.1"
+  },
   "devDependencies": {
     "clear-require": "^2.0.0",
     "del": "^3.0.0",
