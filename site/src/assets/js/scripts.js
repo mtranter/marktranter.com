@@ -270,7 +270,7 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-        var myLatlng = new google.maps.LatLng(-32.9283, 151.7817);
+        var myLatlng = new google.maps.LatLng(-33.8688, 151.2093);
         var straya = new google.maps.LatLng(-28.0, 133.7751);
             var styles = [
                 {
