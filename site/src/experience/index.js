@@ -4,8 +4,19 @@ headerService.registerHeaderItem({title:'Experience', elId: 'experience'})
 
 module.exports = {
   experience: [{
+      from: 'June 2018',
+      to: 'June 2019',
+      role:'Director',
+      where: 'Engitano',
+      website: `https://www.engitano.com`,
+      blurb: `
+      Software Engineering Consultancy.</br>
+      Equal Experts Associate.</br>
+      Software Engineering, Architecture, Devops, Cloud Native, Agile Delivery, CI/CD</br>
+      `
+    },{
       from: 'Aug 2016',
-      to: 'Present',
+      to: 'June 2018',
       role:'Senior Engineer',
       where: 'Judopay, London',
       website: `https://www.judopay.com`,
