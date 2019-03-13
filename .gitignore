@@ -3,3 +3,4 @@ iamx/
 dist/
 .terraform/
 site/.s3-deploy-cache
+site/deploy/pgp.key
