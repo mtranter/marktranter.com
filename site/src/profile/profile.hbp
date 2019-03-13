@@ -7,9 +7,10 @@
 
       <div class="col-md-4 col-md-push-8">
         <div class="biography">
-          <div class="myphoto">
+          <!-- <div class="myphoto">
             <img src="./assets/images/me.png" alt="">
-          </div>
+          </div> -->
+          <h4>Profile</h4>
           <ul>
             <li><strong>Name:</strong> {{personalDetails.name}}</li>
             <li><strong>Address:</strong> {{personalDetails.address}}</li>
@@ -30,9 +31,6 @@
 
         </div>
 
-        <div class="my-signature">
-          MTranter
-        </div>
 
         <div class="download-button">
           <a class="btn btn-info btn-lg" href="#contact"><i class="fa fa-paper-plane"></i>Send me message</a>

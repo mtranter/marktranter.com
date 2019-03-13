@@ -12,7 +12,7 @@ module.exports = {
     level: 100
   },{
     name: "Java",
-    level: 95
+    level: 100
   },{
     name: "JavaScript",
     level: 100
@@ -27,25 +27,43 @@ module.exports = {
     level: 60
   },{
     name: "Haskell",
-    level: 40
+    level: 60
   }],
-  otherSkills: [,{
+  otherSkills: [{
+    name: "Microservices",
+    level: 100
+  },{
     name: "Docker",
+    level: 100
+  },{
+    name: "Kubernetes",
     level: 90
   },{
     name: "SQL",
-    level: 85
+    level: 90
+  },{
+    name: "Terraform",
+    level: 100
   },{
     name: "NoSQL",
-    level: 80
+    level: 100
   },{
     name: "CI/CD",
     level: 90
   },{
     name: "Kafka & Confluent Stack",
-    level: 95
+    level: 100
   },{
     name: "AWS",
+    level: 95
+  },{
+    name: "TDD/BDD/XP",
+    level: 95
+  },{
+    name: "Security",
+    level: 85
+  },{
+    name: "Typed Functional Programming",
     level: 95
   }]
 }

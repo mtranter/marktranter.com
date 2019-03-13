@@ -40,6 +40,10 @@
     border-bottom-right-radius: 10px;
     border:1px solid #EEEEEE;
     position: relative;
+
+    h4 {
+        padding:1em 0 0 1em;
+    }
 }
 
 .biography::after{
